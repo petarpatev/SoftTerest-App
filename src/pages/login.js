@@ -1,4 +1,4 @@
-import { login } from '../user.js'
+import { login } from '../user.js';
 
 const page = document.getElementById('login');
 
