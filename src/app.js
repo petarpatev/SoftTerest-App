@@ -1,9 +1,9 @@
-const homePage = document.getElementById('home');
-const registerPage = document.getElementById('register');
-const loginPage = document.getElementById('login');
-const catalogPage = document.getElementById('dashboard-holder');
-const detailsPage = document.getElementById('details');
-const createPage = document.getElementById('create');
+import { showHomePage } from '../src/pages/home.js';
+import { showRegisterPage } from '../src/pages/register.js';
+import { showLoginPage } from '../src/pages/login.js';
+import { showCatalogPage } from '../src/pages/catalog.js';
+import { showDetailsPage } from '../src/pages/details.js';
+import { showCreatePage } from '../src/pages/create.js';
 
 const pageWrapper = document.getElementById('page-wrapper');
 
@@ -11,16 +11,22 @@ const allPages = document.getElementById('page-container');
 allPages.remove();
 
 const pages = {
-    '/': homePage,
-    '/register': registerPage,
-    '/login': loginPage,
-    '/catalog': catalogPage,
-    '/details': detailsPage,
-    '/create': createPage
+    '/': showHomePage,
+    '/register': showRegisterPage,
+    '/login': showLoginPage,
+    '/catalog': showCatalogPage,
+    '/details': showDetailsPage,
+    '/create': showCreatePage
 }
 
-function showPage(path) {
-    const page = pages[path];
+const context = {
+    showPage,
+}
+
+function showPage(page) {
     pageWrapper.replaceChildren(page);
 }
-window.showPage = showPage;
+
+window.show = () => {
+    showCatalogPage(context);
+}
