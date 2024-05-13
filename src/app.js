@@ -5,10 +5,8 @@ import { showCatalogPage } from '../src/pages/catalog.js';
 import { showDetailsPage } from '../src/pages/details.js';
 import { showCreatePage } from '../src/pages/create.js';
 
-const pageWrapper = document.getElementById('page-wrapper');
+import { initialize } from './router.js';
 
-const allPages = document.getElementById('page-container');
-allPages.remove();
 
 const pages = {
     '/': showHomePage,
@@ -19,14 +17,11 @@ const pages = {
     '/create': showCreatePage
 }
 
-const context = {
-    showPage,
+function removePages() {
+    const allPages = document.getElementById('page-container');
+    allPages.remove();
 }
 
-function showPage(page) {
-    pageWrapper.replaceChildren(page);
-}
-
-window.show = () => {
-    showCatalogPage(context);
-}
+removePages();
+const router = initialize(pages);
+router.navigateTo('/');
