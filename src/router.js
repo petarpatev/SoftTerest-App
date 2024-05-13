@@ -6,7 +6,8 @@ export function initialize(linksDict) {
 
     const context = {
         showPage,
-        navigateTo
+        navigateTo,
+        updateNav
     }
 
     return context;
@@ -35,6 +36,19 @@ export function initialize(linksDict) {
 
         if (typeof handler == 'function') {
             handler(context);
+        }
+    }
+
+    function updateNav() {
+        const userElements = navigation.querySelectorAll('.user');
+        const guestElements = navigation.querySelectorAll('.guest');
+        const user = JSON.parse(localStorage.getItem('user'));
+        if(user) {
+            userElements.forEach(element => element.style.display = 'block');
+            guestElements.forEach(element => element.style.display = 'none');
+        } else {
+            userElements.forEach(element => element.style.display = 'none');
+            guestElements.forEach(element => element.style.display = 'block');
         }
     }
 }

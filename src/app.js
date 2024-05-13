@@ -14,7 +14,7 @@ const pages = {
     '/login': showLoginPage,
     '/catalog': showCatalogPage,
     '/details': showDetailsPage,
-    '/create': showCreatePage
+    '/create': showCreatePage,
 }
 
 function removePages() {
@@ -24,4 +24,5 @@ function removePages() {
 
 removePages();
 const router = initialize(pages);
+router.updateNav();
 router.navigateTo('/');
