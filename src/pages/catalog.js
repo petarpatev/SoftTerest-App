@@ -1,8 +1,12 @@
-import { getAllIdeas } from "../data.js";
+import { getAllIdeas, getIdeaById } from "../data.js";
 
 const page = document.getElementById('dashboard-holder');
+page.addEventListener('click', onSelectIdea);
+
+let ctx;
 
 export async function showCatalogPage(context) {
+    ctx = context;
     context.showPage(page);
     const ideas = await getAllIdeas();
     if (ideas.length == 0) {
@@ -22,6 +26,16 @@ function createIdea(idea) {
         <p class="card-text">${idea.title}</p>
     </div>
     <img class="card-image" src=${idea.img} alt="Card image cap">
-    <a class="btn" href="">Details</a>`;
+    <a data-id=${idea._id} class="btn" href="/details">Details</a>`;
     return ideaWrapper;
+}
+
+function onSelectIdea(e) {
+    e.preventDefault();
+    if(e.target.tagName == 'A') {
+        const id = e.target.dataset.id;
+        if(id) {
+            ctx.navigateTo('/details', id);
+        }
+    }
 }

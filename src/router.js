@@ -31,11 +31,11 @@ export function initialize(linksDict) {
         }
     }
 
-    function navigateTo(path) {
+    function navigateTo(path, ...params) {
         let handler = linksDict[path];
 
         if (typeof handler == 'function') {
-            handler(context);
+            handler(context, ...params);
         }
     }
 
