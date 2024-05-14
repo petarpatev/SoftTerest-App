@@ -1,8 +1,11 @@
-import { getIdeaById } from "../data.js";
+import { getIdeaById, deleteIdeaById } from "../data.js";
 
 const page = document.getElementById('details');
 
+let ctx;
+
 export async function showDetailsPage(context, id) {
+    ctx = context;
     const idea = await getIdeaById(id);
     page.replaceChildren(createIdeaDetailsCard(idea));
     context.showPage(page);
@@ -21,10 +24,17 @@ function createIdeaDetailsCard(idea) {
             `
 
     const user = JSON.parse(localStorage.getItem('user'));
-    if(user && user._id == idea._ownerId) {
+    let isOwner = user && user._id == idea._ownerId;
+
+    if (isOwner) {
         const delBtn = document.createElement('div');
         delBtn.classList.add('text-center');
         delBtn.innerHTML = `<a data-id=${idea._id} class="btn detb" href="">Delete</a>`;
+        delBtn.addEventListener('click', async (e) => {
+            e.preventDefault();
+            await deleteIdeaById(idea._id);
+            ctx.navigateTo('/catalog');
+        })
         cardWrapper.appendChild(delBtn);
     }
 

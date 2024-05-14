@@ -6,6 +6,7 @@ import { showDetailsPage } from '../src/pages/details.js';
 import { showCreatePage } from '../src/pages/create.js';
 
 import { initialize } from './router.js';
+import { logout } from './user.js';
 
 
 const pages = {
@@ -15,6 +16,7 @@ const pages = {
     '/catalog': showCatalogPage,
     '/details': showDetailsPage,
     '/create': showCreatePage,
+    '/logout': onLogout,
 }
 
 function removePages() {
@@ -26,3 +28,10 @@ removePages();
 const router = initialize(pages);
 router.updateNav();
 router.navigateTo('/');
+
+//Logout
+function onLogout() {
+    logout();
+    router.updateNav();
+    router.navigateTo('/');
+}
