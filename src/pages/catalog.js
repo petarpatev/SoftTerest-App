@@ -16,6 +16,20 @@ export async function showCatalogPage(context) {
     }
 }
 
+// then/catch syntax
+// export function showCatalogPage(context) {
+//     ctx = context;
+//     context.showPage(page);
+//     getAllIdeas()
+//         .then(ideas => {
+//             if (ideas.length == 0) {
+//                 page.innerHTML = '<h1>No ideas yet! Be the first one :)</h1>';
+//             } else {
+//                 page.replaceChildren(...ideas.map(createIdea));
+//             }
+//         })
+// }
+
 function createIdea(idea) {
     const ideaWrapper = document.createElement('div');
     ideaWrapper.classList.add('card', 'overflow-hidden', 'current-card', 'details');
@@ -32,9 +46,9 @@ function createIdea(idea) {
 
 function onSelectIdea(e) {
     e.preventDefault();
-    if(e.target.tagName == 'A') {
+    if (e.target.tagName == 'A') {
         const id = e.target.dataset.id;
-        if(id) {
+        if (id) {
             ctx.navigateTo('/details', id);
         }
     }

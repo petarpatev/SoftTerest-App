@@ -22,3 +22,33 @@ export async function logout() {
     get(userPathnames.logout);
     localStorage.removeItem('user');
 }
+
+
+
+
+
+// then/catch syntax
+// export function login(email, password, ctx) {
+//     const userCredentials = { email, password };
+//     post(userPathnames.login, userCredentials)
+//         .then(user => {
+//             localStorage.setItem('user', JSON.stringify(user));
+//             ctx.updateNav();
+//             ctx.navigateTo('/');
+//         })
+// }
+
+// export function register(email, password, ctx) {
+//     const userCredentials = { email, password };
+//     post(userPathnames.register, userCredentials)
+//         .then(user => {
+//             localStorage.setItem('user', JSON.stringify(user));
+//             ctx.updateNav();
+//             ctx.navigateTo('/');
+//         })
+// }
+
+// export function logout() {
+//     get(userPathnames.logout);
+//     localStorage.removeItem('user');
+// }

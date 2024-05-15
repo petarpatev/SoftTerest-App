@@ -21,3 +21,21 @@ export async function getIdeaById(ideaId) {
 export async function deleteIdeaById(ideaId) {
     return del(endPoints.getIdeaById + ideaId);
 }
+
+
+// then/catch syntax
+// export function getAllIdeas() {
+//     return get(endPoints.getAllIdeas);
+// }
+
+// export function createIdea(ideaData) {
+//     return post(endPoints.createIdea, ideaData);
+// }
+
+// export function getIdeaById(ideaId) {
+//     return get(endPoints.getIdeaById + ideaId);
+// }
+
+// export function deleteIdeaById(ideaId) {
+//     return del(endPoints.getIdeaById + ideaId);
+// }

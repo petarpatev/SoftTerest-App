@@ -23,3 +23,19 @@ async function onSubmit(e) {
     ctx.updateNav();
     ctx.navigateTo('/catalog');
 }
+
+// then/catch syntax
+// function onSubmit(e) {
+//     e.preventDefault();
+//     const formData = new FormData(e.currentTarget);
+//     const title = formData.get('title');
+//     const description = formData.get('description');
+//     const img = formData.get('imageURL');
+
+//     createIdea({ title, description, img })
+//         .then(newIdea => {
+//             ctx.updateNav();
+//             ctx.navigateTo('/catalog');
+//         })
+
+// }
